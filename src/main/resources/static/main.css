@@ -1,0 +1,190 @@
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .menu__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px; }
+
+.create {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px; }
+
+@media (max-width: 800px) {
+  .menu {
+    vertical-align: center; }
+    .menu__item {
+      margin: 0 5px;
+      display: inline-flex;
+      min-width: 50px;
+      padding: 5px; }
+  .create {
+    margin: 0 5px;
+    display: inline-flex;
+    min-width: 50px;
+    padding: 5px; } }
+
+.article {
+  padding: 10px; }
+  .article__title {
+    position: relative; }
+  .article__image {
+    display: none; }
+    .article__image_visible {
+      display: block; }
+  .article__edit {
+    display: flex;
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 100; }
+  .article__delete {
+    display: flex;
+    position: absolute;
+    right: 5%;
+    top: 0%;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 100; }
+  .article__form {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 400px;
+    height: 400px; }
+
+.header {
+  padding: 10px; }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.6);
+  display: none; }
+  .overlay__open {
+    display: block; }
+
+.modal {
+  display: none;
+  width: 600px;
+  max-width: 100%;
+  height: 400px;
+  max-height: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.308);
+  justify-content: center; }
+  .modal__closeButton {
+    position: absolute;
+    z-index: 1;
+    top: 5%;
+    right: 20px;
+    border: 0;
+    background: black;
+    color: white;
+    padding: 5px 10px;
+    font-size: 1.3rem; }
+  .modal__titleInput {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    text-align: center; }
+  .modal__contentInput {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    height: 65%;
+    text-align: center; }
+  .modal__submit {
+    position: absolute;
+    bottom: 5%;
+    left: 45%;
+    width: 10%; }
+  .modal__labelTitle {
+    position: absolute;
+    top: 5%;
+    font-weight: 600; }
+  .modal__labelContent {
+    position: absolute;
+    top: 20%;
+    font-weight: 600; }
+  .modal__open {
+    display: flex; }
+
+.grid {
+  display: grid;
+  grid-template-areas: "header" "menu" "article" "footer";
+  grid-template-rows: 1fr 1fr 7fr 1fr;
+  grid-gap: 10px;
+  height: 100vh;
+  margin: 0; }
+  .grid__header {
+    grid-area: header;
+    background-color: rgba(243, 187, 187, 0.473); }
+  .grid__menu {
+    grid-area: menu;
+    background-color: rgba(233, 243, 187, 0.473); }
+  .grid__article {
+    grid-area: article;
+    background-color: rgba(187, 230, 243, 0.473); }
+  .grid__footer {
+    grid-area: footer;
+    background-color: rgba(243, 187, 231, 0.473); }
+
+@media (min-width: 800px) {
+  .grid {
+    grid-template-areas: "header header" "menu article" "footer footer";
+    grid-template-rows: 1fr 8fr 1fr;
+    grid-template-columns: 2fr 8fr; }
+    .grid__header {
+      grid-area: header;
+      background-color: rgba(243, 187, 187, 0.473); }
+    .grid__menu {
+      grid-area: menu;
+      background-color: rgba(233, 243, 187, 0.473); }
+    .grid__article {
+      grid-area: article;
+      background-color: rgba(187, 230, 243, 0.473); }
+    .grid__footer {
+      grid-area: footer;
+      background-color: rgba(243, 187, 231, 0.473); } }
+
+
+/*# sourceMappingURL=main.css.map*/

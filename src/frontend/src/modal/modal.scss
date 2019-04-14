@@ -1,0 +1,84 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+
+    &__open {
+        display: block;
+    }
+}
+
+.modal {
+    display: none;
+    width: 600px;
+    max-width: 100%;
+    height: 400px;
+    max-height: 100%;
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.308);
+    justify-content: center;
+
+    &__closeButton {
+        position: absolute;
+        z-index: 1;
+        top: 5%;
+        right: 20px;
+        border: 0;
+        background: black;
+        color: white;
+        padding: 5px 10px;
+        font-size: 1.3rem;
+    }
+
+    &__titleInput {
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        right: 5%;
+        width: 90%;
+        text-align: center;
+    }
+
+    &__contentInput {
+        position: absolute;
+        top: 25%;
+        left: 5%;
+        right: 5%;
+        width: 90%;
+        height: 65%;
+        text-align: center;
+    }
+
+    &__submit {
+        position: absolute;
+        bottom: 5%;
+        left: 45%;
+        width: 10%;
+    }
+
+    &__labelTitle {
+        position: absolute;
+        top: 5%;
+        font-weight: 600;
+    }
+
+    &__labelContent {
+        position: absolute;
+        top: 20%;
+        font-weight: 600;
+    }
+
+    &__open {
+        display: flex;
+    }
+}
