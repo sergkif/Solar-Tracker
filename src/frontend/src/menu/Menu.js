@@ -9,7 +9,7 @@ export default class Menu extends EventObserver {
         this.createMenu();
     }
 
-    createMenu () {
+    createMenu() {
         var ul = document.querySelector(".menu")
         this.httpGet('article').then(function(articles){
             for (let article of articles) {
@@ -29,13 +29,13 @@ export default class Menu extends EventObserver {
         new Modal('', '', '', create);
     }
     
-    async httpGet(theUrl){
+    async httpGet(theUrl) {
         var data = await fetch(theUrl);
         return data.json();
     }
 
     @bind
-    sendTitle (e) {
+    sendTitle(e) {
         this.broadcast({id: e.target.dataset.artId});
     }
 }

@@ -1,4 +1,12 @@
 .article {
+    animation-name: articleAnimation;
+    -webkit-animation-name: articleAnimation; 
+ 
+    animation-duration: 2s; 
+    -webkit-animation-duration: 2s;
+ 
+    animation-timing-function: ease-in-out; 
+    -webkit-animation-timing-function: ease-in-out;
     padding: 10px;
 
     &__title {
@@ -31,6 +39,17 @@
         font-size: 14px;
         font-style: normal;
         font-weight: 100;
+        cursor: pointer;
+
+        color: black;
+        background-color: rgba(0,0,0,0);
+		transition: all 1s ease;
+
+		&:hover {
+			transform: scale(1.05);
+            background-color: rgba(0,0,0,0.3);
+            color: rgb(255, 255, 255);
+		}
     }
 
     &__delete {
@@ -47,6 +66,17 @@
         font-size: 14px;
         font-style: normal;
         font-weight: 100;
+        cursor: pointer;
+        color: black;
+
+        background-color: rgba(0,0,0,0);
+		transition: all 1s ease;
+
+		&:hover {
+			transform: scale(1.05);
+            background-color: rgba(0,0,0,0.3);
+            color: rgb(255, 255, 255);
+		}
     }
 
     &__form {
@@ -57,4 +87,27 @@
         width: 400px;
         height: 400px;
     }
+
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 1s ease;
+
+    &:hover { 
+        background-color: rgba(0, 0, 0, 0.15);
+    }
+}
+
+@keyframes articleAnimation {
+    0% { opacity: 0; transform: translate(0px,-1000px) rotate(0deg) ;  }
+    50% { opacity: 1;  }
+    60% { transform: translate(0px,30px) rotate(0deg) ;  }
+    80% { transform: translate(0px,-10px) rotate(0deg) ;  }
+    100% { transform: translate(0px,0px) rotate(0deg) ;  }
+}
+
+@-webkit-keyframes articleAnimation {
+    0% { -webkit-opacity: 0; -webkit-transform: translate(0px,-1000px) rotate(0deg) ;  }
+    50% { -webkit-opacity: 1;  }
+    60% { -webkit-transform: translate(0px,30px) rotate(0deg) ;  }
+    80% { -webkit-transform: translate(0px,-10px) rotate(0deg) ;  }
+    100% { -webkit-transform: translate(0px,0px) rotate(0deg) ;  }
 }

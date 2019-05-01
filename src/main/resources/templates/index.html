@@ -1,23 +1,31 @@
 
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="main.css">
+    <script th:inline="javascript">
+      var frontendData = [[${frontendData}]];
+      
+    </script>
   </head>
   <body>
     <div class="grid">
       <div class="grid__header">
-        <div class="header">header</div>
+        <div class="header">Solar Tracker</div>
+      </div>
+      <div class="grid__user">
+        <div class="user"><a class="user__login" href="/login">Login</a>
+          <div class="user__name"></div><img class="user__img"><a class="user__logout" href="/logout">Logout</a>
+        </div>
       </div>
       <div class="grid__menu">
         <ul class="menu"></ul>
         <div class="create">Create article</div>
       </div>
       <div class="grid__article">
-        <div class="article"></div>
       </div>
       <div class="grid__footer"></div>
     </div>

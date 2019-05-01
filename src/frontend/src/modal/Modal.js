@@ -75,5 +75,5 @@ export default class Modal {
         });
         this.modal.classList.toggle("modal__open");
         this.overlay.classList.toggle("overlay__open");
-    }    
+    }
 }

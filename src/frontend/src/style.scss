@@ -2,60 +2,76 @@
 @import "./article/article.scss";
 @import "./header/header.scss";
 @import "./modal/modal.scss";
+@import "./user/user.scss";
 
 .grid {
-    display: grid;
-    grid-template-areas: "header" "menu" "article" "footer";
-    grid-template-rows: 1fr 1fr 7fr 1fr;
-    grid-gap: 10px;
-    height: 100vh;
-	margin: 0;
+  display: grid;
+  grid-template-areas: "header user" "menu menu" "article article" "footer footer";
+  grid-template-rows: 1fr 1fr 7fr 1fr;
+  grid-template-columns: 8fr 2fr;
+  grid-gap: 10px;
+  height: 100vh;
+  margin: 0;
+
+  &__header {
+    grid-area: header;
+    background-color: rgba(243, 187, 187, 0.473);
+  }
+
+  &__user {
+    display: flex;
+    grid-area: user;
+    background-color: #ffaaff;
+  }
+
+  &__menu {
+    display: inline-flex;
+    grid-area: menu;
+    background-color: rgba(233, 243, 187, 0.473);
+  }
+
+  &__article {
+    grid-area: article;
+    background-color: rgba(187, 230, 243, 0.473);
+  }
+
+  &__footer {
+    grid-area: footer;
+    background-color: rgba(243, 187, 231, 0.473);
+  }
+}
   
+@media (min-width: 800px) {
+  .grid {
+    grid-template-areas: "header header user" "menu article article" "footer footer footer";
+    grid-template-rows: 1fr 8fr 1fr;
+    grid-template-columns: 2fr 6fr 2fr;
+
+    &__user {
+      display: flex;
+      grid-area: user;
+      background-color: #ffaaff;
+    }
+
     &__header {
       grid-area: header;
       background-color: rgba(243, 187, 187, 0.473);
     }
-  
+
     &__menu {
+      display: block;
       grid-area: menu;
-	  background-color: rgba(233, 243, 187, 0.473);
+      background-color: rgba(233, 243, 187, 0.473);
     }
-  
+
     &__article {
       grid-area: article;
       background-color: rgba(187, 230, 243, 0.473);
     }
-  
+
     &__footer {
       grid-area: footer;
       background-color: rgba(243, 187, 231, 0.473);
     }
-}
-  
-@media (min-width: 800px) {
-    .grid {
-		grid-template-areas: "header header" "menu article" "footer footer";
-		grid-template-rows: 1fr 8fr 1fr;
-		grid-template-columns: 2fr 8fr;
-
-		&__header {
-		grid-area: header;
-		background-color: rgba(243, 187, 187, 0.473);
-		}
-
-		&__menu {
-		grid-area: menu;
-		background-color: rgba(233, 243, 187, 0.473);
-		}
-
-		&__article {
-		grid-area: article;
-		background-color: rgba(187, 230, 243, 0.473);
-		}
-
-		&__footer {
-		grid-area: footer;
-		background-color: rgba(243, 187, 231, 0.473);
-		}
-    }
+  }
 }

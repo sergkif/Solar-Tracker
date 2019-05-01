@@ -11,7 +11,11 @@ export default class Article {
     }
 
     createArticle(title, content, image) {
-        var container = document.querySelector(".article");
+        var gridArticle = document.querySelector(".grid__article");
+
+        var container = document.createElement("div");
+        container.classList.add("article");
+        gridArticle.appendChild(container);
 
         var h1 = document.createElement("h1");
         h1.classList.add("article__title");
@@ -41,7 +45,7 @@ export default class Article {
         del.classList.add("article__delete");
         del.innerHTML = "delete";
         h1.appendChild(del);
-        del.addEventListener('click', this.httpDelete);
+        del.addEventListener('click', this.httpDelete);       
     }
 
     @bind

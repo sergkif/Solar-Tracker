@@ -88,7 +88,7 @@ module.exports = {
       // chunkFilename: "[id].css"
     }),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
+      filename: '../templates/index.html',
       template: 'src/index.pug',
       inject: false,
       metadata: {
@@ -99,6 +99,12 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist')
+    // contentBase: path.resolve(__dirname, 'dist'),
+    contentBase: ['../main/resources/static', '../main/resources/templates'],
+    compress: true,
+    port: 8000,
+    allowedHosts: [
+      'localhost:8080'
+    ]
   }
 };

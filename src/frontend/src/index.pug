@@ -1,19 +1,24 @@
 include ./menu/menu
 include ./article/article
 include ./header/header
+include ./user/user
 
-html(lang="en")
+html(lang="en" xmlns:th="http://www.thymeleaf.org")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title Document
         link(rel="stylesheet" href="main.css")
+        script(th:inline="javascript").
+            var frontendData = [[${frontendData}]];
 
     body
         .grid
             .grid__header
                 +header()
+            .grid__user
+                +user()
             .grid__menu
                 +menu()
             .grid__article

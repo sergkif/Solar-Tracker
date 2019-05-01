@@ -9984,7 +9984,10 @@ function () {
   _createClass(Article, [{
     key: "createArticle",
     value: function createArticle(title, content, image) {
-      var container = document.querySelector(".article");
+      var gridArticle = document.querySelector(".grid__article");
+      var container = document.createElement("div");
+      container.classList.add("article");
+      gridArticle.appendChild(container);
       var h1 = document.createElement("h1");
       h1.classList.add("article__title");
       h1.innerHTML = title;
@@ -10065,6 +10068,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _menu_Menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../menu/Menu */ "./src/menu/Menu.js");
 /* harmony import */ var _article_Article__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../article/Article */ "./src/article/Article.js");
 /* harmony import */ var _header_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../header/Header */ "./src/header/Header.js");
+/* harmony import */ var _user_User__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user/User */ "./src/user/User.js");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -10074,6 +10078,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 
 
@@ -10092,32 +10097,58 @@ function () {
 
     this.header = new _header_Header__WEBPACK_IMPORTED_MODULE_2__["default"](headerElement);
     this.menu = new _menu_Menu__WEBPACK_IMPORTED_MODULE_0__["default"](menuElement);
+    this.httpGet("article").then(function (articles) {
+      console.log(articles.status);
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = articles[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var article = _step.value;
+          new _article_Article__WEBPACK_IMPORTED_MODULE_1__["default"](article);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    });
     this.header.subscribe(function (data) {
       if (data.content == "home") {
         _this.clearArticles();
 
         _this.httpGet("article").then(function (articles) {
           console.log(articles.status);
-          var _iteratorNormalCompletion = true;
-          var _didIteratorError = false;
-          var _iteratorError = undefined;
+          var _iteratorNormalCompletion2 = true;
+          var _didIteratorError2 = false;
+          var _iteratorError2 = undefined;
 
           try {
-            for (var _iterator = articles[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-              var article = _step.value;
+            for (var _iterator2 = articles[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+              var article = _step2.value;
               new _article_Article__WEBPACK_IMPORTED_MODULE_1__["default"](article);
             }
           } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion && _iterator.return != null) {
-                _iterator.return();
+              if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+                _iterator2.return();
               }
             } finally {
-              if (_didIteratorError) {
-                throw _iteratorError;
+              if (_didIteratorError2) {
+                throw _iteratorError2;
               }
             }
           }
@@ -10132,6 +10163,7 @@ function () {
         console.log(article.status);
       });
     });
+    if (frontendData) new _user_User__WEBPACK_IMPORTED_MODULE_3__["default"](frontendData.profile);
   }
 
   _createClass(Controller, [{
@@ -10169,8 +10201,11 @@ function () {
   }, {
     key: "clearArticles",
     value: function clearArticles() {
-      while (articleElement.firstChild) {
-        articleElement.removeChild(articleElement.firstChild);
+      // while(articleElement.firstChild) articleElement.removeChild(articleElement.firstChild);
+      var gridArticle = document.querySelector(".grid__article");
+
+      while (gridArticle.firstChild) {
+        gridArticle.removeChild(gridArticle.firstChild);
       }
     }
   }]);
@@ -10548,6 +10583,41 @@ function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/user/User.js":
+/*!**************************!*\
+  !*** ./src/user/User.js ***!
+  \**************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return User; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var User = function User(profile) {
+  _classCallCheck(this, User);
+
+  if (!profile) {
+    var login = document.querySelector(".user__login");
+    login.classList.add("user__login_visible");
+  } else {
+    this.profile = profile;
+    var img = document.querySelector(".user__img");
+    img.classList.add("user__img_visible");
+    img.src = profile.userpic;
+    var name = document.querySelector(".user__name");
+    name.classList.add("user__name_visible");
+    name.innerHTML = profile.name;
+    var logout = document.querySelector(".user__logout");
+    logout.classList.add("user__logout_visible");
+  }
+};
+
+
 
 /***/ }),
 
